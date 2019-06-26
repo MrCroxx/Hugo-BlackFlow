@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="{{ .Site.BaseURL }}/js/md5.min.js"></script>
+<div id="gitalk-container"></div>
+<script>
+  var gitalk = new Gitalk({
+    id: md5(location.href),
+    clientID: '{{ if isset .Site.Params "comment_system_client_id" }}{{ .Site.Params.comment_system_client_id }}{{ end }}',
+    clientSecret: '{{ if isset .Site.Params "comment_system_client_secret" }}{{ .Site.Params.comment_system_client_secret }}{{ end }}',
+    repo: '{{ if isset .Site.Params "comment_system_repo" }}{{ .Site.Params.comment_system_repo }}{{ end }}',
+    owner: '{{ if isset .Site.Params "comment_system_owner" }}{{ .Site.Params.comment_system_owner }}{{ end }}',
+    admin: ['{{ if isset .Site.Params "comment_system_owner" }}{{ .Site.Params.comment_system_owner }}{{ end }}'],
+    distractionFreeMode: true
+  })
+  gitalk.render('gitalk-container')
+</script>

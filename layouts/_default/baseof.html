@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html>
-    {{- partial "head.html" . -}}
-    <body>
-        {{- partial "header.html" . -}}
-        <div id="content">
-        {{- block "main" . }}{{- end }}
+<html lang="{{ .Site.LanguageCode }}">
+
+{{ partial "head.html" . }}
+
+<body>
+    <div id="layout">
+
+        {{ partial "sidemenu.html" . }}
+
+        <div id="main">
+            {{ block "main" . }}{{ end }}
         </div>
-        {{- partial "footer.html" . -}}
-    </body>
+    </div>
+
+    {{ if or .Params.math .Site.Params.math }}
+    {{ partial "math.html" . }}
+    {{ end }}
+
+</body>
+
+<!-- Theme JS -->
+{{ partial "theme-js.html" . }}
+
 </html>
