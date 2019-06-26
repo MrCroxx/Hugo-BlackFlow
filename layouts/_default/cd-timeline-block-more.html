@@ -1,0 +1,9 @@
+<div class="cd-timeline-block" onclick="javascript:location.href='{{ .Permalink }}'">
+    <div class="cd-timeline-img cd-picture">
+        <img src="{{ .Site.BaseURL }}/img/more.png" alt="facebook">
+    </div><!-- cd-timeline-img -->
+
+    <div class="cd-timeline-content">
+        <h3>Read more in <i class="fa fa-{{ if eq .Type "tags" }}tag{{ else if eq .Type "topics" }}book{{ end }} fa-fw"></i><a href="{{ .Title | urlize }}">{{ .Title }}</a> ...</h3>
+    </div> <!-- cd-timeline-content -->
+</div> <!-- cd-timeline-block -->

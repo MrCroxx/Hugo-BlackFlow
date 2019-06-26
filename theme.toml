@@ -7,7 +7,7 @@ licenselink = "https://github.com/MrCroxx/Hugo-BlackFlow/blob/master/LICENSE"
 description = ""
 homepage = "http://hugo-blackflow.github.io/"
 tags = []
-features = []
+features = ['Timeline','Katex','Gitalk']
 min_version = "0.41"
 
 [author]

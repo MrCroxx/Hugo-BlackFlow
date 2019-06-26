@@ -1,0 +1,49 @@
+{{ define "main" }}
+
+{{ $max_taxonomy_terms := 7 }}
+{{ if isset .Site.Params "max_taxonomy_terms" }}
+{{$max_taxonomy_terms = .Site.Params.max_taxonomy_terms}}
+{{end}}
+<div class="header">
+  <h1>
+    {{ if eq .Type "tags" }}
+    <i class='fa fa-tags fa-fw'></i>
+    {{ else if eq .Type "topics" }}
+    <i class='fa fa-book fa-fw'></i>
+    {{ end }}
+    {{ .Title }}
+  </h1>
+</div>
+<div class="content">
+  {{ $data := .Data }}
+  {{ $terms := .Data.Terms.ByCount }}
+  {{ $type := .Type}}
+
+  {{ range $key, $value := $terms }}
+  {{ $term := .Term }}
+  {{ $pages := .Pages }}
+
+  <h2>
+    {{ if eq $type "tags" }}
+    <i class='fa fa-tag fa-fw'></i>
+    {{ else if eq $type "topics" }}
+    <i class='fa fa-book fa-fw'></i>
+    {{ end }}
+    <a href="{{ $value.Name | urlize }}">{{ $value.Name }}</a>
+    <span>&#40;{{ $value.Count }}&#41;</span>
+  </h2>
+  <section id="cd-timeline" class="cd-container">
+    {{ with $.Site.GetPage "taxonomy" (printf "%s/%s" $type $term) }}
+
+    {{ range first $max_taxonomy_terms $pages }}
+    {{ .Render "cd-timeline-block"}}
+    {{ end }}
+    {{ if gt (len $pages) $max_taxonomy_terms }}
+    {{ .Render "cd-timeline-block-more" }}
+    {{ end }}
+    {{ end }}
+  </section> <!-- cd-timeline -->
+  {{ end }}
+</div>
+
+{{ end }}
