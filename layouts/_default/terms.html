@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-{{ $max_taxonomy_terms := 7 }}
+{{ $max_taxonomy_terms := 3 }}
 {{ if isset .Site.Params "max_taxonomy_terms" }}
 {{$max_taxonomy_terms = .Site.Params.max_taxonomy_terms}}
 {{end}}
@@ -34,13 +34,15 @@
   </h2>
   <section id="cd-timeline" class="cd-container">
     {{ with $.Site.GetPage "taxonomy" (printf "%s/%s" $type $term) }}
+    
+      {{ range first $max_taxonomy_terms $pages }}
 
-    {{ range first $max_taxonomy_terms $pages }}
-    {{ .Render "cd-timeline-block"}}
-    {{ end }}
-    {{ if gt (len $pages) $max_taxonomy_terms }}
-    {{ .Render "cd-timeline-block-more" }}
-    {{ end }}
+      {{ .Render "cd-timeline-block-post-brief"}}
+
+      {{ end }}
+      {{ if gt (len $pages) $max_taxonomy_terms }}
+      {{ .Render "cd-timeline-block-more" }}
+      {{ end }}
     {{ end }}
   </section> <!-- cd-timeline -->
   {{ end }}

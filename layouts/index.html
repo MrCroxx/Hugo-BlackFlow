@@ -9,6 +9,77 @@
 </div>
 
 <div class="content">
-
+    <canvas id="postsChart" width="800" height="300"></canvas>
 </div>
+<script>
+    window.onload = function () {
+        let ctx = document.querySelector("#postsChart");
+        let words = [
+            {{ range .Data.Pages.GroupByDate "2006-01" "asc" }}                            
+                {{ $words := 0 }}
+                    {{ range .Pages }}                            
+                    {{ $words = add $words .WordCount }}
+                    {{ end }}
+                {{ $words }},
+            {{ end }}
+        ];
+        let months = [
+            {{ range .Data.Pages.GroupByDate "2006-01" "asc" }}                            
+                {{ .Key }},
+            {{ end }}
+        ];
+        let posts = [
+            {{ range .Data.Pages.GroupByDate "2006-01" "asc" }}                            
+                {{ len .Pages }},
+            {{ end }}
+        ];
+        let postschart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [
+                    {
+                        label: "Posts",
+                        pointBorderWidth:2,
+                        pointBackgroundColor:'rgba(172,60,172,0.5)',
+                        borderColor:"rgba(172,172,172,0.5)",
+                        backgroundColor: 'rgba(172,172,172,0.2)',
+                        fill: true,
+                        lineTension:0.5,
+                        data: posts,
+                        yAxisID:"posts"
+                    },
+                    {
+                        label: "Words",
+                        pointBorderWidth:2,
+                        pointBackgroundColor:'rgba(0,0,0,0.5)',
+                        borderColor:"rgba(0,0,0,0.5)",
+                        backgroundColor: 'rgba(0,0,0,0.2)',
+                        fill: true,
+                        lineTension:0.5,
+                        data: words,
+                        yAxisID:"words"
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [
+                        {
+                            id:"posts",
+                            position:"left",
+                            gridLines:{
+                                display:false
+                            }
+                        }, 
+                        {
+                            id:"words",
+                            position:"right",
+                        }
+                    ]
+                }
+            }
+        });
+    }
+</script>
 {{ end }}
