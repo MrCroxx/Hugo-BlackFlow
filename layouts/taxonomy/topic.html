@@ -10,7 +10,7 @@
     <h2><i class='fa fa-clock-o fa-fw'></i>{{ .Key }}</h2>
     <section id="cd-timeline" class="cd-container">
         {{ range .Pages }}
-        {{ .Render "cd-timeline-block"}}
+        {{ .Render "cd-timeline-block-post"}}
         {{end}}
     </section> <!-- cd-timeline -->
     {{ end }}

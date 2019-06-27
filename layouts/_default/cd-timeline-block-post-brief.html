@@ -1,0 +1,13 @@
+<div class="cd-timeline-block" onclick="javascript:location.href='{{ .Permalink }}'">
+    <div class="cd-timeline-img cd-picture">
+        <img src="{{ .Site.BaseURL }}/img/{{ if isset .Site.Params "img_item" }}{{ .Site.Params.img_item }}{{ else }}text.png{{ end }}"
+            alt="facebook">
+    </div><!-- cd-timeline-img -->
+
+    <div class="cd-timeline-content">
+        <h2><small>{{ .Title }}</small></h2>
+        <a class="cd-read-more" href="{{ .RelPermalink }}">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+        <span
+            class="cd-date">{{ with .Site.Params.dateFormat }}{{ $.Date.Format . }}{{ else }}{{ .Date.Format "02 Jan 2006, 15:04" }}{{ end }}</span>
+    </div> <!-- cd-timeline-content -->
+</div> <!-- cd-timeline-block -->
