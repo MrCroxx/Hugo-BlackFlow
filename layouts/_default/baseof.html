@@ -1,7 +1,24 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
 
-{{ partial "head.html" . }}
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{ hugo.Generator }}
+
+    <!-- PureCSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css" />
+
+    <!-- Font Awesome -->
+    <link href="{{ .Site.BaseURL }}/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/blackflow.css" />
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/sidemenu.css" />
+
+    {{ block "custom-css" . }}{{ end }}
+
+</head>
 
 <body>
     <div id="layout">
@@ -12,14 +29,12 @@
             {{ block "main" . }}{{ end }}
         </div>
     </div>
-
-    {{ if or .Params.math .Site.Params.math }}
-    {{ partial "math.html" . }}
-    {{ end }}
-
 </body>
 
 <!-- Theme JS -->
-{{ partial "theme-js.html" . }}
+<script src="{{ .Site.BaseURL }}/js/ui.js"></script>
+<script src="{{ .Site.BaseURL }}/js/menus.js"></script>
+
+{{ block "custom-js" . }}{{ end }}
 
 </html>
