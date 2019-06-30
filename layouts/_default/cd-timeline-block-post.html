@@ -6,7 +6,7 @@
     <div class="cd-timeline-content">
         <h2>{{ .Title }}</h2>
         <p>
-            {{ with .Description }}
+            {{ if .Description }}
             {{ .Description }}
             {{ else }}
             {{ .Summary }}
