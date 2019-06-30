@@ -1,0 +1,31 @@
+{{ define "main" }}
+
+<div class="header">
+    <h1>404 Not Found</h1>
+</div>
+
+<div class="content">
+    <div class="bc-container">
+        <div class="clouds">
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+        </div>
+        <div class="balloon">
+            <div class="envelope"></div>
+            <div class="basket"></div>
+        </div>
+    </div>
+</div>
+{{ end }}
+
+{{ define "custom-css" }}
+<link rel="stylesheet" href="{{.Site.BaseURL}}/css/balloon.css" />
+{{ end }}
