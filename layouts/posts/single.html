@@ -8,6 +8,14 @@
 {{ end }}
 <script>hljs.initHighlightingOnLoad();</script>
 {{ end }}
+<!-- include -->
+{{ if isset .Params "include" }}
+<!-- ChartJS -->
+{{ if in .Params.include "ChartJS" }}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+<link rel="shortcut icon" href="{{ .Site.BaseURL }}/img/favicon.ico" type="image/x-icon" />
+{{ end }}
+{{ end }}
 {{ end }}
 
 {{ define "main" }}
