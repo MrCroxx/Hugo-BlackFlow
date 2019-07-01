@@ -3,7 +3,6 @@ languageCode = "en-us"
 title = "BlackFlow Theme Demo"
 theme = "BlackFlow"
 
-paginate = 12
 enableEmoji = true
 enableRobotsTXT = true
 copyright = "&copy; 2019. All rights reserved."
@@ -25,7 +24,6 @@ hasCJKLanguage = true
     comment_system_client_secret = "17ca828f17eafa59907768c5988a01f05d915aec"
     comment_system_owner = "Hugo-BlackFlow"
     comment_system_repo = "hugo-blackflow.github.io"
-    # img_item = "bird.png"
 
 [social]
     github = "Hugo-BlackFlow"
