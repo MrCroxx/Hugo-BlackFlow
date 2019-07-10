@@ -18,7 +18,7 @@
 {{ end }}
 <style>
     img {
-        width: 100%;
+        max-width: 100%;
     }
 </style>
 {{ end }}
@@ -31,17 +31,17 @@
 </div>
 <div class="content">
 
-    {{ partial "post_meta.html" . }}
+        {{ partial "post_meta.html" . }}
 
-    {{ .Content }}
-
-    {{ partial "prev_next_post.html" . }}
-
-    {{ if isset .Site.Params "comment_system" }}
-    {{ if eq .Site.Params.comment_system "gitalk" }}
-    {{ partial "gitalk.html" . }}
-    {{ end }}
-    {{ end }}
+        {{ .Content }}
+    
+        {{ partial "prev_next_post.html" . }}
+    
+        {{ if isset .Site.Params "comment_system" }}
+        {{ if eq .Site.Params.comment_system "gitalk" }}
+        {{ partial "gitalk.html" . }}
+        {{ end }}
+        {{ end }}
 
 </div>
 
